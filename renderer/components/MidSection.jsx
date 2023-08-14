@@ -2,15 +2,8 @@ import React, { useState } from 'react'
 import {
     Flex,
     Heading,
-    Avatar,
     Text,
     IconButton,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
     Divider,
     Input, useColorMode,
 } from '@chakra-ui/react'
@@ -29,16 +22,20 @@ const MidSection = () => {
     const [value, changeValue] = useState(1)
 
     const themeColor = {
-        light: "#Fdfcf7",
-        dark: "#16181c",
+        light: "#F5F5F5",
+        dark: "#0d1117",
     };
     return (
         <Flex
             w={["100%", "100%", "60%", "60%", "55%"]}
-            p="3%"
+            p={3}
+            m={1.5}
             flexDir="column"
             overflow="auto"
             minH="100vh"
+            borderRadius={8}
+            overscrollY={"hidden"}
+            backgroundColor={themeColor[colorMode]}
         >
             {/* Search Bar */}
             <Flex justify="space-between" alignItems="center" mb={4}>
@@ -82,7 +79,7 @@ const MidSection = () => {
                     <Heading as="h2" size="lg" letterSpacing="tight">Poetry</Heading>
                     <Text fontSize="small" color="gray" ml={4}>sonnets, Odes and more</Text>
                 </Flex>
-                <IconButton icon={<FiCalendar />} />
+                {/* <IconButton icon={<FiCalendar />} /> */}
             </Flex>
 
             {/* Poems */}

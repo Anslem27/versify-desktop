@@ -1,30 +1,46 @@
-import React from 'react'
-import { Button, Flex, Heading, useColorMode } from '@chakra-ui/react'
+import React from 'react';
+import { Button, Flex, Heading, useColorMode, Text } from '@chakra-ui/react';
 import RiddleComponent from './RiddleComponent';
+import SavedPoems from './SavedPoems';
+import styled from '@emotion/styled';
+/* 
+Hide overflow scroll but maintain scroll behaviour
+ */
+const ScrollableContainer = styled(Flex)`
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 11 */
+    ::-webkit-scrollbar {
+        width: 0; /* Safari and Chrome */
+    }
+`;
 
 const EndDrawer = () => {
     const { colorMode } = useColorMode();
     const themeColor = {
-        light: "#Fdfcf7",
-        dark: "#16181c",
+        light: "#F5F5F5",
+        dark: "#0d1117",
     };
+
     return (
-        <Flex
-            w={["100%", "100%", "40%"]}
-            bgColor={themeColor}
-            p="3%"
+        <ScrollableContainer
+            w={["100%", "100%", "20%"]}
+            bgColor={themeColor[colorMode]}
+            p={3}
+            m={1.5}
+            borderRadius={8}
             flexDir="column"
-            overflow="auto"
             minW={[null, null, "350px", "300px", "500px"]}
         >
-            <Flex alignContent="center">
-            </Flex>
             <Heading letterSpacing="tight" fontSize={15}>Riddle me this.</Heading>
             {/* Riddle here */}
             <RiddleComponent />
-            <Button mt={4} p={7} borderRadius={15}>Get the Mobile App</Button>
-        </Flex>
-    )
+            <SavedPoems />
+            <Button h={10} mt={4} p={3} borderRadius={12}>
+                Get the Mobile App
+                </Button>
+        </ScrollableContainer>
+    );
 }
 
-export default EndDrawer
+export default EndDrawer;

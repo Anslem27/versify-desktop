@@ -1,4 +1,5 @@
 # Versify Destop
+This is a desktop port of the Versify Mobile Application, made with Electron and Next js.
 
 <img src= "https://cdn.dribbble.com/userupload/4383191/file/original-1192996cc6f4172597ad5617d87d4079.jpg?resize=752x"/>
 

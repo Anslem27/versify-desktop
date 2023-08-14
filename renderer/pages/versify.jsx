@@ -23,6 +23,7 @@ export default function VersifyApp() {
             maxW="2000px"
             flexDir={["column", "column", "row"]}
             overflow="hidden"
+            overscrollY={"hidden"}
         >
             {/* Column 1 */}
             <AppDrawer />

@@ -73,7 +73,7 @@ export default function createWindow(windowName, options) {
     ...options,
     minWidth,
     minHeight,
-    icon: path.join(__dirname, '../../', 'public', 'logo.ico'), 
+    icon: path.join(__dirname, '../', 'public', 'logo.ico'), 
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

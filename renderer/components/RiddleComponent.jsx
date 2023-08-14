@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Spinner, Text, Button } from '@chakra-ui/react';
+import { Spinner, Text, Button, Box, Flex } from '@chakra-ui/react';
+import Link from 'next/link';
 
 function RiddleComponent() {
     const [quote, setQuote] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [showAnswer, setShowAnswer] = useState(false); // Add state to track answer visibility
+    const [showAnswer, setShowAnswer] = useState(false);
 
     useEffect(() => {
         async function fetchRandomQuote() {
@@ -25,7 +26,9 @@ function RiddleComponent() {
     }, []);
 
     return (
-        <div>
+        <Box
+
+        >
             {/* Show Spinner while loading */}
             {isLoading ? (
                 <Spinner size="xs" />
@@ -34,23 +37,65 @@ function RiddleComponent() {
                     {/* Show fetched riddle */}
                     {quote.riddle && (
                         <>
-                            <div>
-                                <Text letterSpacing="tight" fontSize={16}>
-                                    {quote.riddle}
-                                </Text>
-                                {/* Show answer when showAnswer is true */}
-                                {showAnswer && <p style={{ fontWeight: "bold" }}>- {quote.answer}</p>}
-                            </div>
+                            <Flex
+                                justify='center'
+                                direction='column'
+                                align='center'
+                                bgColor={"#ff4500"}
+                                borderRadius='10px'
+                                m={3}
+                                position='relative'>
+                                <Flex
+                                    direction='column'
+                                    mb='12px'
+                                    align='center'
+                                    justify='center'
+                                    px='15px'
+                                    pt='55px'>
+                                    <Text
+                                        fontSize={{ base: "lg", xl: "18px" }}
+                                        color='white'
+                                        fontWeight='bold'
+                                        lineHeight='150%'
+                                        textAlign='center'
+                                        px='10px'
+                                        mt="10px"
+                                        mb='6px'>
+                                        {quote.riddle}
+                                    </Text>
+                                    {showAnswer &&
+                                        <Text
+                                            fontSize='14px'
+                                            color={"white"}
+                                            fontWeight='500'
+                                            px='10px'
+                                            mb='6px'
+                                            textAlign='center'>
+                                            {quote.answer}
+                                        </Text>
+                                    }
+                                </Flex>
 
-                            {/* Toggle showAnswer when button is clicked */}
-                            <Button mt={4} p={2} borderRadius={8} onClick={() => setShowAnswer(!showAnswer)}>
-                                {showAnswer ? 'Hide answer' : 'Show answer'}
-                            </Button>
+                                <Button
+                                    bg='whiteAlpha.300'
+                                    _hover={{ bg: "whiteAlpha.200" }}
+                                    _active={{ bg: "whiteAlpha.100" }}
+                                    mb={{ sm: "16px", xl: "24px" }}
+                                    color={"white"}
+                                    fontWeight='regular'
+                                    fontSize='sm'
+                                    minW='185px'
+                                    onClick={() => setShowAnswer(!showAnswer)}
+                                    mx='auto'>
+                                    Show Answer
+                                </Button>
+
+                            </Flex>
                         </>
                     )}
                 </div>
             )}
-        </div>
+        </Box>
     );
 }
 
