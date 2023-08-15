@@ -30,7 +30,7 @@ const EndDrawer = () => {
             m={1.5}
             borderRadius={8}
             flexDir="column"
-            minW={[null, null, "350px", "300px", "500px"]}
+            minW={[null, null, "350px", "300px", "350px"]}
         >
             <Heading letterSpacing="tight" fontSize={15}>Riddle me this.</Heading>
             {/* Riddle here */}

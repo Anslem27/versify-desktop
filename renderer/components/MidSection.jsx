@@ -27,7 +27,8 @@ const MidSection = () => {
     };
     return (
         <Flex
-            w={["100%", "100%", "60%", "60%", "55%"]}
+            w={["100%", "60%", "60%", "55%"]}
+            minW={[null, null, "60%", "60%"]}
             p={3}
             m={1.5}
             flexDir="column"

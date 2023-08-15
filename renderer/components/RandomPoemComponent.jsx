@@ -123,7 +123,7 @@ const RandomPoemComponent = () => {
                     <Text m={3} fontWeight={"bold"}>Sonnets</Text>
 
                     {isGridView ? (
-                        <Grid templateColumns="repeat(2, 1fr)" gap={4} overflow={"hidden"}>
+                        <Grid templateColumns="repeat(3, 1fr)" gap={4} overflow={"hidden"} p={3}>
                             {poems.map((poem, index) => (
                                 <Box
                                     key={index}
@@ -131,6 +131,10 @@ const RandomPoemComponent = () => {
                                     p={4}
                                     borderRadius="md"
                                     overflow="hidden"
+                                    _hover={{
+                                        transform: 'scale(1.05)', // Small zoom on hover
+                                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', // Splash effect on hover
+                                    }}
                                     onClick={() => openModal(poem)}
                                     style={{ cursor: 'pointer' }}
                                 >
@@ -201,8 +205,8 @@ const RandomPoemComponent = () => {
                                     onClick={() => savePoemToLocal(selectedPoem)}
                                     leftIcon={<FaSave />}
                                     colorScheme="teal"
-                                    size="xs"
-                                    bgGradient="linear(to-r, teal.400, blue.500)"
+                                    size="lg"
+                                    bgGradient="linear(to-r, red.400, #ff4500)"
                                     border="1px"
                                     borderColor="teal.400"
                                     _hover={{

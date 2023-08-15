@@ -74,8 +74,7 @@ const AppDrawer = () => {
                             <Flex p={2} mr={[2, 6, 0, 0, 0]}>
                                 <Link
                                     display={["none", "none", "flex", "flex", "flex"]}
-                                    _hover={{ color: "purple.500" }}
-                                >
+                                    _hover={{ color: "#ff4500" }}    >
                                     <Icon
                                         as={FiHome}
                                         fontSize={33}
@@ -88,7 +87,7 @@ const AppDrawer = () => {
                             <Flex p={2} mr={[2, 6, 0, 0, 0]}>
                                 <Link
                                     display={["none", "none", "flex", "flex", "flex"]}
-                                    _hover={{ color: "purple.500" }}
+                                    _hover={{ color: "#ff4500" }}
                                 >
                                     <Icon
                                         as={FiSearch}
@@ -101,7 +100,7 @@ const AppDrawer = () => {
                             <Flex p={2} mr={[2, 6, 0, 0, 0]}>
                                 <Link
                                     display={["none", "none", "flex", "flex", "flex"]}
-                                    _hover={{ color: "purple.500" }}
+                                    _hover={{ color: "#ff4500" }}
                                 >
                                     <Icon
                                         as={FiBookmark}
@@ -115,7 +114,7 @@ const AppDrawer = () => {
                             <Flex p={2} mr={[2, 6, 0, 0, 0]}>
                                 <Link
                                     display={["none", "none", "flex", "flex", "flex"]}
-                                    _hover={{ color: "purple.500" }}
+                                    _hover={{ color: "#ff4500" }}
                                 >
                                     <Icon
                                         as={FiSettings}
@@ -135,73 +134,6 @@ const AppDrawer = () => {
                 </Flex>
             </Flex>
 
-            <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerCloseButton mt="3" ml="3" />
-                        <DrawerHeader>
-                            <Image
-                                height={"50px"}
-                                width={"80px"}
-                                objectFit="cover"
-                                src="/svg/nest.svg"
-                                alt="Nest"
-                            />
-                        </DrawerHeader>
-
-                        <DrawerBody>
-                            <Flex direction="column" alignItems="start">
-                                <Flex p={2}>
-                                    <Link
-                                        _hover={{ color: "purple.500" }}
-                                    >
-                                        <Icon as={FiHome} fontSize={23} className="active-icon" />
-                                    </Link>
-                                </Flex>
-                                <Flex p={2}>
-                                    <Link
-                                        _hover={{ color: "purple.500" }}
-                                    >
-                                        <Icon as={FiNavigation} fontSize={23} />
-                                    </Link>
-                                </Flex>
-                                <Flex p={2} mr={[2, 6, 0, 0, 0]}>
-                                    <Link
-                                        _hover={{ color: "purple.500" }}
-                                    >
-                                        <Icon as={FiActivity} fontSize={23} />
-                                    </Link>
-                                </Flex>
-                                <Flex p={2} mr={[2, 6, 0, 0, 0]}>
-                                    <Link
-                                        _hover={{ color: "purple.500" }}
-                                    >
-                                        <Icon as={FiSearch} fontSize={23} />
-                                    </Link>
-                                </Flex>
-                                <Flex p={2} mr={[2, 6, 0, 0, 0]}>
-                                    <Link
-                                        _hover={{ color: "purple.500" }}
-                                    >
-                                        <Icon as={FiSettings} fontSize={23} />
-                                    </Link>
-                                </Flex>
-                                <DarkModeSwitch />
-                            </Flex>
-                        </DrawerBody>
-
-                        <DrawerFooter>
-                            <Flex direction="column" >
-                                <Divider mt={3} mb={3} />
-                                {/* <DarkModeSwitch /> */}
-                                <Flex justifyContent="center">
-                                    <Avatar size="sm" mt={3} p={1} src="avatar-1.jpg" />
-                                </Flex>
-                            </Flex>
-                        </DrawerFooter>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
         </div>
     );
 };

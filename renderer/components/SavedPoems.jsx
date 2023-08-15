@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, Button, Center, VStack, HStack } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, Center, VStack, HStack, Card } from '@chakra-ui/react';
 import Link from 'next/link';
 
 const SavedPoems = () => {
@@ -45,7 +45,9 @@ const SavedPoems = () => {
                             p={4}
                             borderRadius="md"
                             maxW="500px"
+                            height={"180px"}
                             overflow="hidden"
+                            textOverflow={"ellipsis"}
                         >
                             <Heading fontSize="lg" mb={2}>
                                 {poem.title}

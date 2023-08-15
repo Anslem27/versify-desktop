@@ -52,6 +52,7 @@ function RiddleComponent() {
                                     justify='center'
                                     px='15px'
                                     pt='55px'>
+                                    <img src='images/riddle.png' height={"20"}></img>
                                     <Text
                                         fontSize={{ base: "lg", xl: "18px" }}
                                         color='white'
@@ -70,6 +71,7 @@ function RiddleComponent() {
                                             fontWeight='500'
                                             px='10px'
                                             mb='6px'
+                                            textColor={"green.100"}
                                             textAlign='center'>
                                             {quote.answer}
                                         </Text>
