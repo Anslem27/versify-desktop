@@ -4,22 +4,17 @@ import {
     useColorMode,
     Spinner
 } from '@chakra-ui/react';
-import AppDrawer from '../components/Drawer';
-import EndDrawer from '../components/EndDrawer';
 import MidSection from '../components/MidSection';
 import { useRouter } from 'next/router';
+import PageDrawer from '../components/PageDrawer';
+import ExplorerSection from '../components/ExplorerSection';
+const Explorer = () => {
 
-export default function VersifyApp() {
     const { colorMode } = useColorMode();
     const [display, changeDisplay] = useState('hide');
     const [value, changeValue] = useState(1);
-    const router = useRouter();
     const [loading, setLoading] = useState(true);
 
-    const themeColor = {
-        light: "#Fdfcf7",
-        dark: "#16181c",
-    };
 
     useEffect(() => {
         // Simulate checking a Google URL
@@ -36,6 +31,7 @@ export default function VersifyApp() {
     }, []);
 
     return (
+
         <Flex
             h={[null, null, "100vh"]}
             maxW="2000px"
@@ -49,11 +45,13 @@ export default function VersifyApp() {
                 </Flex>
             ) : (
                 <>
-                    <AppDrawer />
-                    <MidSection />
-                    <EndDrawer />
+                    <PageDrawer />
+                    <ExplorerSection />
                 </>
             )}
         </Flex>
-    );
+
+    )
 }
+
+export default Explorer

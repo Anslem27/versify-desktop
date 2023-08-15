@@ -3,18 +3,19 @@ import {
     Flex,
     Heading,
     Text,
-    IconButton,
+    IconButton, Button,
     Divider,
-    Input, useColorMode,
+    Input, useColorMode
 } from '@chakra-ui/react'
 import {
     FiCalendar,
     FiChevronDown,
-    FiChevronUp
+    FiChevronUp, FiArrowUpRight
 } from "react-icons/fi"
 import { SearchIcon } from "@chakra-ui/icons";
 import RandomPoemComponent from './RandomPoemComponent';
-
+import HomeBooks from './HomeBooks';
+import Link from 'next/link';
 
 const MidSection = () => {
     const { colorMode } = useColorMode();
@@ -64,17 +65,38 @@ const MidSection = () => {
                 mb={4}
                 letterSpacing="tight"
             >
-                Happy Reading, <Flex display="inline-flex" fontWeight="bold">Calvin</Flex>
+                Happy Reading,
             </Heading>
 
-
+            <Flex display="inline-flex" fontSize={"2xl"} fontWeight="bold">Calvin</Flex>
             <Text fontWeight="bold" fontSize="xl">Keep the story Going</Text>
             <Text letterSpacing="tight" fontSize={13}>
-                Don't let the story end just ye. Continue reading your last book and immerse
+                Don't let the story end just yet. Continue reading your last book and immerse
                 your'self in the world of literature.
             </Text>
+            <Link href="/explorer" passHref>
+                <Button
+                    width={180}
+                    borderRadius={20}
+                    background="black"
+                    textColor="white"
+                    p={3}
+                    mt={8}
+                    rightIcon={<FiArrowUpRight color="#ff4500" size={20} />}
+                >
+                    Explorer
+                </Button>
+            </Link>
 
-            {/* Poetry and Pending Books */}
+            {/*Gutendex Books */}
+            <Flex justifyContent="space-between" mt={8}>
+                <Flex align="flex-end">
+                    <Heading as="h2" size="lg" letterSpacing="tight">Book Collection</Heading>
+                </Flex>
+                {/* <IconButton icon={<FiCalendar />} /> */}
+            </Flex>
+            <HomeBooks />
+
             <Flex justifyContent="space-between" mt={8}>
                 <Flex align="flex-end">
                     <Heading as="h2" size="lg" letterSpacing="tight">Poetry</Heading>

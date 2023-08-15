@@ -6,7 +6,7 @@ import {
     ModalOverlay, ModalContent,
     ModalHeader, ModalBody, ModalCloseButton, useToast, Button,
 } from '@chakra-ui/react';
-import { FaList, FaTh, FaSave } from 'react-icons/fa';
+import { FaList, FaTh, FaSave, FaDownload } from 'react-icons/fa';
 
 const RandomPoemComponent = () => {
     const [poems, setPoems] = useState([]);
@@ -198,25 +198,20 @@ const RandomPoemComponent = () => {
                                         {line}
                                     </Text>
                                 ))}
-                                <Text fontWeight="bold" p={3}>
-                                    - By {selectedPoem?.author}
-                                </Text>
-                                <Button
+                                <Flex justifyContent={"space-between"} p={5}>
+                                    <Text fontWeight="bold" p={3}>
+                                        - By {selectedPoem?.author}
+                                    </Text>
+                                    <Button
                                     onClick={() => savePoemToLocal(selectedPoem)}
-                                    leftIcon={<FaSave />}
+                                    leftIcon={<FaDownload />}
                                     colorScheme="teal"
-                                    size="lg"
-                                    bgGradient="linear(to-r, red.400, #ff4500)"
-                                    border="1px"
-                                    borderColor="teal.400"
-                                    _hover={{
-                                        bgGradient: 'none',
-                                        bg: 'teal.400',
-                                        borderColor: 'teal.400',
-                                    }}
+                                    borderRadius={12}
                                 >
                                     Save Poem
                                 </Button>
+                                </Flex>
+
                             </ModalBody>
                         </ModalContent>
                     </Modal>
