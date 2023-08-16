@@ -3,6 +3,8 @@ import { Button, Flex, Heading, useColorMode, Text } from '@chakra-ui/react';
 import RiddleComponent from './RiddleComponent';
 import SavedPoems from './SavedPoems';
 import styled from '@emotion/styled';
+
+import MobileCard from './MobileCard';
 /* 
 Hide overflow scroll but maintain scroll behaviour
  */
@@ -36,6 +38,7 @@ const EndDrawer = () => {
             {/* Riddle here */}
             <RiddleComponent />
             <SavedPoems />
+            <MobileCard />
         </ScrollableContainer>
     );
 }

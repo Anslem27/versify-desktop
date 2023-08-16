@@ -154,8 +154,7 @@ const RandomPoemComponent = () => {
                                                 {poem.title}
                                             </Heading>
                                             <Text color={'gray.500'} noOfLines={5}>
-                                                In this post, we will give an overview of what is new in React 18, and what it
-                                                means for the future.
+                                                {poem.lines.slice(0, 3).join(' ')}
                                             </Text>
                                         </Box>
                                         <HStack borderTop={'1px'} color="black">
@@ -203,7 +202,10 @@ const RandomPoemComponent = () => {
                                     style={{ cursor: 'pointer' }}
                                 >
                                     <VStack align="start" spacing={2}>
-                                        <h3>{poem.title}</h3>
+                                        <h3 style={{
+                                            fontWeight: "bold",
+                                            fontSize: "20px"
+                                        }}>{poem.title}</h3>
                                         <Text
                                             height="100px"
                                             overflow="hidden"
@@ -211,7 +213,7 @@ const RandomPoemComponent = () => {
                                         >
                                             {poem.lines.slice(0, 3).join(' ')}
                                         </Text>
-                                        <Text>{poem.author}</Text>
+                                        <Text fontWeight={"bold"}>By -{poem.author}</Text>
                                     </VStack>
                                 </Box>
                             ))}

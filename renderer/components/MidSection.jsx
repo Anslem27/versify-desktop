@@ -5,7 +5,7 @@ import {
     Text,
     IconButton, Button,
     Divider,
-    Input, useColorMode
+    Input, useColorMode, Stack, VStack, useBreakpointValue
 } from '@chakra-ui/react'
 import {
     FiCalendar,
@@ -60,33 +60,60 @@ const MidSection = () => {
                     />
                 </Flex>
             </Flex>
-            <Heading
-                fontWeight="normal"
-                mb={4}
-                letterSpacing="tight"
-            >
-                Happy Reading,
-            </Heading>
-
-            <Flex display="inline-flex" fontSize={"2xl"} fontWeight="bold">Calvin</Flex>
-            <Text fontWeight="bold" fontSize="xl">Keep the story Going</Text>
-            <Text letterSpacing="tight" fontSize={13}>
-                Don't let the story end just yet. Continue reading your last book and immerse
-                your'self in the world of literature.
-            </Text>
-            <Link href="/explorer" passHref>
-                <Button
-                    width={180}
-                    borderRadius={20}
-                    background="black"
-                    textColor="white"
-                    p={3}
-                    mt={8}
-                    rightIcon={<FiArrowUpRight color="#ff4500" size={20} />}
+            <Flex
+                w={'full'}
+                h={'100vh'}
+                borderRadius={8}
+                backgroundImage={
+                    'url(https://cdn.dribbble.com/userupload/4383196/file/original-f96332dc194b0a3ddec31a7576788702.jpg?resize=1200x900&vertical=center)'
+                }
+                backgroundSize={'cover'}
+                backgroundPosition={'center center'}>
+                <VStack
+                    w={'full'}
+                    justify={'center'}
+                    p={useBreakpointValue({ base: 4, md: 8 })}
+                    borderRadius={8}
+                    border={`2px solid transparent, linear-gradient(to right, black, transparent)`}
+                    bgGradient={'linear(to-r, blackAlpha.600, transparent)'}
                 >
-                    Explorer
-                </Button>
-            </Link>
+                    <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+                        <Text
+                            color={"black"}
+                            fontWeight={700}
+                            lineHeight={1.2}
+                            fontSize={useBreakpointValue({ base: '2xl', md: '2xl' })}>
+                            Don't let the story end just yet. Continue reading your last book and immerse
+                            your'self in the world of literature.
+                        </Text>
+                        <Stack direction={'row'}>
+                            <Link href="/explorer" passHref>
+                                <Button
+                                    width={180}
+                                    borderRadius={20}
+                                    background="black"
+                                    textColor="white"
+                                    p={3}
+                                    mt={8}
+                                    rightIcon={<FiArrowUpRight color="#ff4500" size={20} />}
+                                >
+                                    Explorer
+                                </Button>
+                            </Link>
+                            <Button
+                                bg={"#ff4500"}
+                                rounded={'full'}
+                                color={'white'}
+                                _hover={{ bg: 'whiteAlpha.500' }}
+                                p={3}
+                                mt={8}
+                            >
+                                Get the movile app
+                            </Button>
+                        </Stack>
+                    </Stack>
+                </VStack>
+            </Flex>
 
             {/*Gutendex Books */}
             <Flex justifyContent="space-between" mt={8}>

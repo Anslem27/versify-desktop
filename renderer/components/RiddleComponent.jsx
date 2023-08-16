@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Spinner, Text, Button, Box, Flex } from '@chakra-ui/react';
+import {
+    Spinner, Text, Button, Box, Flex, Stack,
+    List,
+    ListItem,
+    ListIcon, useColorModeValue, Center
+} from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons'
 
 function RiddleComponent() {
     const [quote, setQuote] = useState({});
@@ -34,69 +40,65 @@ function RiddleComponent() {
                     {/* Show fetched riddle */}
                     {quote.riddle && (
                         <>
-                            <Flex
-                                justify='center'
-                                direction='column'
-                                align='center'
-                                borderRadius='10px'
-                                m={3}
-                                position='relative'
-                                boxShadow="0px 4px 6px rgba(0, 0, 0, 0.1)"
-                                p={4}
-                                
-                                style={{
-                                    background: 'linear-gradient(to bottom right, #4285F4, #DB4437, #F4B400, #0F9D58)',
-                                    borderRadius: '8px',
-                                    backgroundClip: 'padding-box', // Only apply the background to the padding area
-                                }}
-                            >
-                                <Flex
-                                    direction='column'
-                                    mb='12px'
-                                    align='center'
-                                    justify='center'
-                                    px='15px'
-                                    pt='55px'>
-                                    <img src='images/riddle.png' height={"20"} alt="Riddle Icon"></img>
-                                    <Text
-                                        fontSize={{ base: "lg", xl: "18px" }}
-                                        color='white'
-                                        fontWeight='bold'
-                                        lineHeight='150%'
-                                        textAlign='center'
-                                        px='10px'
-                                        mt="10px"
-                                        mb='6px'>
-                                        {quote.riddle}
-                                    </Text>
-                                    {showAnswer && (
+                            <Center py={6}>
+                                <Box
+                                    maxW={'330px'}
+                                    w={'full'}
+                                    bg={useColorModeValue('white', 'gray.800')}
+                                    boxShadow={'2xl'}
+                                    rounded={'md'}
+                                    overflow={'hidden'}>
+                                    <Stack
+                                        textAlign={'center'}
+                                        p={6}
+                                        color={useColorModeValue('gray.800', 'white')}
+                                        align={'center'}>
                                         <Text
-                                            fontSize='14px'
-                                            color={"white"}
-                                            fontWeight='500'
-                                            px='10px'
-                                            mb='6px'
-                                            textColor={"green.100"}
-                                            textAlign='center'>
-                                            {quote.answer}
+                                            fontSize={'sm'}
+                                            fontWeight={500}
+                                            bg={useColorModeValue('green.50', 'green.900')}
+                                            p={2}
+                                            px={3}
+                                            color={'green.500'}
+                                            rounded={'full'}>
+                                            Riddle me this...
                                         </Text>
-                                    )}
-                                </Flex>
+                                        <Stack direction={'row'} align={'center'} justify={'center'}>
+                                            <Text fontSize={'3xl'}>-</Text>
+                                            {showAnswer && (
+                                                <Text fontSize={'xl'} fontWeight={800}>
+                                                    {quote.answer}
+                                                </Text>
 
-                                <Button
-                                    bg='whiteAlpha.300'
-                                    _hover={{ bg: "whiteAlpha.200" }}
-                                    _active={{ bg: "whiteAlpha.100" }}
-                                    mb={{ sm: "16px", xl: "24px" }}
-                                    color={"white"}
-                                    fontWeight='regular'
-                                    fontSize='sm'
-                                    minW='185px'
-                                    onClick={() => setShowAnswer(!showAnswer)}
-                                    mx='auto'>
-                                    See Riddle
-                                </Button>
-                            </Flex>
+                                            )}
+                                            {!showAnswer && (
+                                                <Text color="green.400">Answer is hidden</Text>
+                                            )}
+                                        </Stack>
+                                    </Stack>
+
+                                    <Box bg={useColorModeValue('gray.50', 'gray.900')} px={6} py={10}>
+                                        {quote.riddle}
+
+                                        <Button
+                                            mt={10}
+                                            w={'full'}
+                                            bg={'green.400'}
+                                            color={'white'}
+                                            rounded={'xl'}
+                                            boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
+                                            _hover={{
+                                                bg: 'green.500',
+                                            }}
+                                            onClick={() => setShowAnswer(!showAnswer)}
+                                            _focus={{
+                                                bg: 'green.500',
+                                            }}>
+                                            Show Answer
+                                        </Button>
+                                    </Box>
+                                </Box>
+                            </Center>
                         </>
                     )}
                 </div>
