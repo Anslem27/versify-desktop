@@ -1,4 +1,4 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 
@@ -9,6 +9,11 @@ if (isProd) {
 } else {
   app.setPath('userData', `${app.getPath('userData')} (development)`);
 }
+
+// Expose the function to get the downloads path
+ipcMain.handle('get-downloads-path', (event) => {
+  return app.getPath('downloads');
+});
 
 (async () => {
   await app.whenReady();

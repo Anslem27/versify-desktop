@@ -9,6 +9,8 @@ import {
     Spinner,
     Flex
 } from '@chakra-ui/react';
+import Link from 'next/link';
+import BookDetail from '../pages/book_detail';
 
 const HomeBooks = () => {
     const [books, setBooks] = useState([]);
@@ -34,37 +36,57 @@ const HomeBooks = () => {
                     <Spinner size="lg" />
                 </Center>
             ) : (
-                <Flex justify="center"> {/* Flex container */}
-                    <Grid templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap={4} minChildWidth="300px">
+                <Flex justify="center">
+                    <Grid
+                        templateColumns={{
+                            base: 'repeat(3, minmax(200px, 1fr)))',
+                            sm: 'repeat(3, minmax(200px, 1fr)))',
+                            md: "repeat(auto-fill, minmax(200px, 1fr))",
+                        }}
+                        gap={4}
+                        minChildWidth="300px"
+                        autoRows="minmax(240px, 1fr)"
+                    >
                         {books.map(book => (
                             <GridItem key={book.id}>
-                                <Box rounded="md" p={2} alignItems="center">
-                                    {book.formats && book.formats["image/jpeg"] ? (
-                                        <Image
-                                            src={book.formats["image/jpeg"]}
-                                            alt={book.title}
-                                            maxH="180px"
-                                            objectFit="cover"
-                                            borderRadius={8}
-                                            boxShadow="md"
-                                            onLoad={() => setIsLoading(false)}
-                                        />
-                                    ) : (
-                                        <Box height="180px" bg="gray.200" borderRadius={8} />
-                                    )}
-                                    <Text mt={2}
-                                        fontSize="sm"
-                                        fontWeight="bold"
-                                        style={{
-                                            display: '-webkit-box',
-                                            WebkitLineClamp: 2,
-                                            WebkitBoxOrient: 'vertical',
-                                            overflow: "hidden"
-                                        }}>
-                                        {book.title}
-                                    </Text>
-                                    <Text fontSize="sm">{book.authors[0].name}</Text>
-                                </Box>
+                                <Link href={`/book_detail?id=${book.id}`} passHref>
+                                    <a>
+                                        <Box
+                                            rounded="md"
+                                            p={2}
+                                            alignItems="center"
+                                            cursor="pointer"
+                                        >
+                                            {book.formats && book.formats["image/jpeg"] ? (
+                                                <Image
+                                                    src={book.formats["image/jpeg"]}
+                                                    alt={book.title}
+                                                    maxH="200px"
+                                                    objectFit="cover"
+                                                    borderRadius={8}
+                                                    boxShadow="md"
+                                                    onLoad={() => setIsLoading(false)}
+                                                />
+                                            ) : (
+                                                <Box height="180px" bg="gray.200" borderRadius={8} />
+                                            )}
+                                            <Text
+                                                mt={2}
+                                                fontSize="sm"
+                                                fontWeight="bold"
+                                                style={{
+                                                    display: '-webkit-box',
+                                                    WebkitLineClamp: 2,
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: "hidden"
+                                                }}
+                                            >
+                                                {book.title}
+                                            </Text>
+                                            <Text fontSize="sm">{book.authors[0].name}</Text>
+                                        </Box>
+                                    </a>
+                                </Link>
                             </GridItem>
                         ))}
                     </Grid>

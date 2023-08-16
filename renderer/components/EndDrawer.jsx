@@ -36,9 +36,6 @@ const EndDrawer = () => {
             {/* Riddle here */}
             <RiddleComponent />
             <SavedPoems />
-            <Button h={10} mt={4} p={3} borderRadius={12}>
-                Get the Mobile App
-                </Button>
         </ScrollableContainer>
     );
 }
