@@ -12,6 +12,38 @@ import MoreFromAuthor from '../components/MoreFromAuthor';
 const { remote } = require('electron');
 const fs = require('fs');
 const path = require('path');
+import { motion } from 'framer-motion';
+import styled from '@emotion/styled';
+
+
+const AnimatedBox = styled(motion(Box))`
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    // Apply a simple scale animation
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+`;
+
+const AnimatedImage = styled(motion(Image))`
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    // Apply a fade-in animation
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+`;
+
+
 
 const BookDetail = () => {
     const router = useRouter();
@@ -120,17 +152,23 @@ const BookDetail = () => {
                             {/* Section Drawer */}
                             <PageDrawer />
                             {/* Main book detail Section */}
-                            <Box p={4} display="flex" flex={1}>
+                            <AnimatedBox p={4} m={2} display="flex" flex={1} // Apply animation to this Box
+                                initial={{ opacity: 0, y: -20 }} // Initial animation values
+                                animate={{ opacity: 1, y: 0 }} // Animate to these values
+                                transition={{ duration: 0.5 }}>
                                 <Flex flexDir="column" alignItems="center" width={"50vw"}>
                                     <Flex flexDir="row" justifyContent="center">
                                         <Center>
-                                            <Image
+                                            <AnimatedImage
                                                 src={book.formats && book.formats['image/jpeg'] ? book.formats['image/jpeg'] : ''}
                                                 alt={book.title}
                                                 maxH="300px"
                                                 objectFit="cover"
                                                 borderRadius={8}
                                                 boxShadow="md"
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.5 }}
                                             />
                                         </Center>
                                         <Flex flexDir={"column"} justifyContent={"center"}>
@@ -142,7 +180,7 @@ const BookDetail = () => {
                                                 {book.title}
                                             </Heading>
                                             <Text textAlign={"center"} fontWeight={"bold"}>
-                                                By - {book.authors["name"]}
+                                                By - {book.authors.map(author => author.name).join(', ')}
                                             </Text>
                                         </Flex>
                                     </Flex>
@@ -157,11 +195,11 @@ const BookDetail = () => {
                                     </Flex>
                                 </Flex>
 
-                            </Box>
+                            </AnimatedBox>
                             {/* Other Section */}
                             <Box p={10} borderRadius={10} width={"500px"} display={"flex"} flexDir={"column"} overflowY={"auto"} maxHeight={"100%"}>
                                 <Heading fontSize={25}> More from the author</Heading>
-                                <MoreFromAuthor author={"John"} />
+                                <MoreFromAuthor author={book.authors.map(author => author.name).join(', ')} />
                             </Box>
                         </>
                     )}

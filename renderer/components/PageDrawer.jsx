@@ -15,6 +15,18 @@ import {
     FiBookmark,
     FiArrowLeft
 } from "react-icons/fi";
+import { motion } from "framer-motion";
+import styled from "@emotion/styled";
+
+const SqueezeIconButton = motion(IconButton);
+
+const BackIconWrapper = styled(motion.div)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+
 
 const PageDrawer = () => {
     const { colorMode } = useColorMode();
@@ -52,7 +64,11 @@ const PageDrawer = () => {
                             href="/home"
                             _hover={{ color: "#ff4500" }}    >
                             <IconButton
-                                icon={<FiArrowLeft size={20}/>}
+                                icon={<BackIconWrapper
+                                    whileHover={{ scale: 1.1, rotate: 5 }}
+                                ><FiArrowLeft size={20} />
+                                </BackIconWrapper>
+                                }
                                 fontSize={33}
                                 className="active-icon"
                                 borderRadius={8}
