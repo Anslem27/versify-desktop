@@ -63,6 +63,9 @@ const AppDrawer = () => {
                             objectFit="cover"
                             src="/images/logo.png"
                             alt="Logo"
+                            style={{
+                                borderRadius: "8px"
+                            }}
                         />
                         <Divider mt={[5, 5, 5]} mb={[25, 50, 50]} />
                         <Flex

@@ -65,7 +65,7 @@ const MidSection = () => {
                 h={'100vh'}
                 borderRadius={8}
                 backgroundImage={
-                    'url(https://cdn.dribbble.com/userupload/4383196/file/original-f96332dc194b0a3ddec31a7576788702.jpg?resize=1200x900&vertical=center)'
+                    'url(https://th.bing.com/th/id/OIP.hsFL2YJDYegKjEcMwzYDngHaE8?pid=ImgDet&w=1152&h=768&rs=1)'
                 }
                 backgroundSize={'cover'}
                 backgroundPosition={'center center'}>
@@ -79,7 +79,7 @@ const MidSection = () => {
                 >
                     <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
                         <Text
-                            color={"black"}
+                            color={"white"}
                             fontWeight={700}
                             lineHeight={1.2}
                             fontSize={useBreakpointValue({ base: '2xl', md: '2xl' })}>
@@ -108,7 +108,7 @@ const MidSection = () => {
                                 p={3}
                                 mt={8}
                             >
-                                Get the movile app
+                                Get the mobile app
                             </Button>
                         </Stack>
                     </Stack>
@@ -118,7 +118,7 @@ const MidSection = () => {
             {/*Gutendex Books */}
             <Flex justifyContent="space-between" mt={8}>
                 <Flex align="flex-end">
-                    <Heading as="h2" size="lg" letterSpacing="tight">Book Collection</Heading>
+                    <Heading as="h2" size="sm" letterSpacing="tight">Book Collection</Heading>
                 </Flex>
                 {/* <IconButton icon={<FiCalendar />} /> */}
             </Flex>
@@ -126,7 +126,7 @@ const MidSection = () => {
 
             <Flex justifyContent="space-between" mt={8}>
                 <Flex align="flex-end">
-                    <Heading as="h2" size="lg" letterSpacing="tight">Poetry</Heading>
+                    <Heading as="h2" size="sm" letterSpacing="tight">Poetry</Heading>
                     <Text fontSize="small" color="gray" ml={4}>sonnets, Odes and more</Text>
                 </Flex>
                 {/* <IconButton icon={<FiCalendar />} /> */}
