@@ -35,7 +35,7 @@ const MoreFromAuthor = ({ author }) => {
                     <Spinner size="lg" />
                 </Center>
             ) : (
-                <Flex justify="center">
+                <Flex justify="center" width={"auto"}>
                     <Grid
                         templateColumns={{
                             base: 'repeat(3, minmax(200px, 1fr)))',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, ColorModeProvider, Flex, Box, Image, Text, Spinner, Center, Heading, Button } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeProvider, Flex, Box, Image, Text, Spinner, Center, Heading, Button, Card } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import customTheme from '../styles/theme';
 import { Global } from '@emotion/react';
@@ -97,7 +97,7 @@ const BookDetail = () => {
                 <GlobalStyle />
                 <Flex
                     h={[null, null, '100vh']}
-                    maxW="auto"
+                    maxW="2000px"
                     flexDir={['column', 'column', 'row']}
                     overflow="hidden"
                     overscrollY="hidden"
@@ -120,8 +120,8 @@ const BookDetail = () => {
                             {/* Section Drawer */}
                             <PageDrawer />
                             {/* Main book detail Section */}
-                            <Box p={4}>
-                                <Flex flexDir="column" alignItems="center" width={"60vw"}>
+                            <Box p={4} display="flex" flex={1}>
+                                <Flex flexDir="column" alignItems="center" width={"50vw"}>
                                     <Flex flexDir="row" justifyContent="center">
                                         <Center>
                                             <Image
@@ -145,32 +145,24 @@ const BookDetail = () => {
                                                 By - {book.authors["name"]}
                                             </Text>
                                         </Flex>
-
                                     </Flex>
-
+                                    {/* Add more details about the book */}
+                                    <Flex flexDir="column" justifyContent="space-between" flex={1} width={"100%"}>
+                                        <Button mt={4} colorScheme="teal" width={"100%"} onClick={handleDownloadEbook}>
+                                            Download eBook
+                                        </Button>
+                                        <Card mt={5} borderRadius={8} flex={1} overflowY="auto" >
+                                            {/* Render the HTML content */}
+                                        </Card>
+                                    </Flex>
                                 </Flex>
-                                {/* Add more details about the book */}
-                                <Button mt={4} colorScheme="teal" width={"100%"} onClick={handleDownloadEbook}>
-                                    Download eBook
-                                </Button>
 
-                                <Box backgroundColor={"white"} mt={5} borderRadius={8} width={"100%"}>
-                                    {/* Render the HTML content */}
-                                    {/* {book.formats && book.formats['text/html'] ? (
-                                        <ReactRenderHTML html={book.formats['text/html']} />
-                                    ) : (
-                                        <Text>No HTML content available.</Text>
-                                    )} */}
-                                </Box>
                             </Box>
-                            <Box p={10} borderRadius={10}
-                                width={"500px"} display={"flex"}
-                                flexDir={"column"}
-                                overflowY={"auto"} maxHeight={"100%"}>
+                            {/* Other Section */}
+                            <Box p={10} borderRadius={10} width={"500px"} display={"flex"} flexDir={"column"} overflowY={"auto"} maxHeight={"100%"}>
                                 <Heading fontSize={25}> More from the author</Heading>
                                 <MoreFromAuthor author={"John"} />
                             </Box>
-
                         </>
                     )}
                 </Flex>
