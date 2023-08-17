@@ -6,7 +6,9 @@ import { Global } from '@emotion/react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageDrawer from '../components/PageDrawer';
+import ReactRenderHTML from 'react-render-html';
 import GlobalStyle from '../styles/global';
+import MoreFromAuthor from '../components/MoreFromAuthor';
 const { remote } = require('electron');
 const fs = require('fs');
 const path = require('path');
@@ -95,7 +97,7 @@ const BookDetail = () => {
                 <GlobalStyle />
                 <Flex
                     h={[null, null, '100vh']}
-                    maxW="2000px"
+                    maxW="auto"
                     flexDir={['column', 'column', 'row']}
                     overflow="hidden"
                     overscrollY="hidden"
@@ -106,36 +108,69 @@ const BookDetail = () => {
                             <Spinner size="xl" />
                         </Flex>
                     ) : !book ? (
-                        <div>Book not found</div>
+                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+                            <Center>
+                                <Text fontSize={22} textAlign={"center"}>
+                                    Something unexpected happened.
+                                </Text>
+                            </Center>
+                        </div>
                     ) : (
                         <>
                             {/* Section Drawer */}
                             <PageDrawer />
                             {/* Main book detail Section */}
                             <Box p={4}>
-                                <Flex flexDir="column" alignItems="center">
+                                <Flex flexDir="column" alignItems="center" width={"60vw"}>
                                     <Flex flexDir="row" justifyContent="center">
                                         <Center>
                                             <Image
                                                 src={book.formats && book.formats['image/jpeg'] ? book.formats['image/jpeg'] : ''}
                                                 alt={book.title}
-                                                maxH="250px"
+                                                maxH="300px"
                                                 objectFit="cover"
                                                 borderRadius={8}
                                                 boxShadow="md"
                                             />
                                         </Center>
-                                        <Heading mt={2} fontSize="4xl" fontWeight="bold" p={5} w={200} textAlign="center">
-                                            {book.title}
-                                        </Heading>
+                                        <Flex flexDir={"column"} justifyContent={"center"}>
+                                            <Heading mt={2}
+                                                fontSize="4xl"
+                                                fontWeight="bold" p={5}
+                                                textAlign="center"
+                                            >
+                                                {book.title}
+                                            </Heading>
+                                            <Text textAlign={"center"} fontWeight={"bold"}>
+                                                By - {book.authors["name"]}
+                                            </Text>
+                                        </Flex>
+
                                     </Flex>
-                                    <Text fontSize="sm">{book.id}</Text>
+
                                 </Flex>
                                 {/* Add more details about the book */}
-                                <Button mt={4} colorScheme="teal" onClick={handleDownloadEbook}>
+                                <Button mt={4} colorScheme="teal" width={"100%"} onClick={handleDownloadEbook}>
                                     Download eBook
                                 </Button>
+
+                                <Box backgroundColor={"white"} mt={5} borderRadius={8} width={"100%"}>
+                                    {/* Render the HTML content */}
+                                    {/* {book.formats && book.formats['text/html'] ? (
+                                        <ReactRenderHTML html={book.formats['text/html']} />
+                                    ) : (
+                                        <Text>No HTML content available.</Text>
+                                    )} */}
+                                </Box>
                             </Box>
+                            <Box p={10} borderRadius={10}
+                                width={"500px"} display={"flex"}
+                                flexDir={"column"}
+                                overflowY={"auto"} maxHeight={"100%"}>
+                                <Heading fontSize={25}> More from the author</Heading>
+                                <MoreFromAuthor author={"John"} />
+                            </Box>
+
                         </>
                     )}
                 </Flex>
@@ -146,3 +181,4 @@ const BookDetail = () => {
 };
 
 export default BookDetail;
+
